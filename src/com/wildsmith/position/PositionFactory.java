@@ -1,11 +1,7 @@
 package com.wildsmith.position;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.wildsmith.constants.Position;
+import com.wildsmith.objects.Player;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -14,8 +10,12 @@ import org.jsoup.nodes.Node;
 import org.jsoup.nodes.TextNode;
 import org.jsoup.select.Elements;
 
-import com.wildsmith.constants.Position;
-import com.wildsmith.objects.Player;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public interface PositionFactory {
 
@@ -33,7 +33,7 @@ public interface PositionFactory {
         }
 
         protected static List<Player> build(Document doc, List<String> tableRows) {
-            Map<Integer, List<Player>> players = new HashMap<>(tableRows.size());
+            Map<Integer, List<Player>> players = new HashMap<Integer, List<Player>>(tableRows.size());
             for (int index = 0; index < tableRows.size(); index++) {
                 Elements jeTableRows = selectTableRows(doc, tableRows.get(index));
                 players.put(index, buildPlayerList(jeTableRows));
@@ -55,7 +55,7 @@ public interface PositionFactory {
 
         protected static List<Player> buildPlayerList(Elements jeQuaterbackTableRows) {
             Position position = null;
-            List<Player> players = new ArrayList<>();
+            List<Player> players = new ArrayList<Player>();
             for (Element tableRow : jeQuaterbackTableRows) {
                 if (tableRow == null) {
                     continue;
@@ -105,7 +105,7 @@ public interface PositionFactory {
         }
 
         protected static List<Player> rankPlayers(List<Player> jePlayers, List<Player> drPlayers) {
-            List<Player> rankedPlayerList = new ArrayList<>(jePlayers.size());
+            List<Player> rankedPlayerList = new ArrayList<Player>(jePlayers.size());
             for (Player jePlayer : jePlayers) {
                 for (Player drPlayer : drPlayers) {
                     if (jePlayer.getFullName().equalsIgnoreCase(drPlayer.getFullName())) {
@@ -136,6 +136,12 @@ public interface PositionFactory {
             Collections.sort(rankedPlayerList);
 
             return rankedPlayerList;
+        }
+
+        protected static void printBlock(String comment) {
+            System.out.println("                                      ");
+            System.out.println("        " + comment + "      ");
+            System.out.println("                                      ");
         }
     }
 }

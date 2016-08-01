@@ -1,13 +1,13 @@
 package com.wildsmith.position;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import com.wildsmith.constants.CSSLocationConstants;
+import com.wildsmith.objects.Player;
 
 import org.jsoup.nodes.Document;
 
-import com.wildsmith.constants.CSSLocationConstants;
-import com.wildsmith.objects.Player;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class DSTPosition implements PositionFactory {
 
@@ -16,7 +16,7 @@ public class DSTPosition implements PositionFactory {
     private static final List<String> DEFENSIVE_SPECIAL_TEAMS_TABLE_ROWS;
 
     static {
-        List<String> tableRows = new ArrayList<>();
+        List<String> tableRows = new ArrayList<String>();
         tableRows.add(CSSLocationConstants.JAMEY_EISENBERG_TABLE_ROWS);
         tableRows.add(CSSLocationConstants.DAVE_RICHARD_TABLE_ROWS);
         tableRows.add(CSSLocationConstants.HEATH_CUMMINGS_TABLE_ROWS);
@@ -30,16 +30,12 @@ public class DSTPosition implements PositionFactory {
             return null;
         }
 
-        System.out.println("                                      ");
-        System.out.println("         Building DST Rankings        ");
-        System.out.println("                                      ");
+        PositionFactoryUtils.printBlock("Building DST Rankings");
 
         List<Player> playersRanked = PositionFactoryUtils.build(doc, DEFENSIVE_SPECIAL_TEAMS_TABLE_ROWS);
         PositionFactoryUtils.printPlayers(playersRanked);
 
-        System.out.println("                                      ");
-        System.out.println("           Done DST Rankings          ");
-        System.out.println("                                      ");
+        PositionFactoryUtils.printBlock("Done DST Rankings");
 
         return playersRanked;
     }

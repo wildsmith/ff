@@ -41,7 +41,7 @@ public class Player implements Comparable<Player> {
 
         extras = extras.trim();
         String[] splitExtras = extras.split(" ");
-        if (splitExtras == null || splitExtras.length == 0) {
+        if (splitExtras.length == 0) {
             return;
         }
 
@@ -52,7 +52,7 @@ public class Player implements Comparable<Player> {
         }
 
         String byeWeekString = splitExtras[splitExtras.length - 1];
-        if (" ".equals(byeWeekString) || "&nbsp;".equals(byeWeekString) || "&#160;".equals(byeWeekString)) {
+        if ("ï¿½".equals(byeWeekString) || "&nbsp;".equals(byeWeekString) || "&#160;".equals(byeWeekString)) {
             byeWeekString = splitExtras[splitExtras.length - 2];
         }
         byeWeek = Integer.valueOf(byeWeekString.replace(")", ""));
@@ -152,6 +152,6 @@ public class Player implements Comparable<Player> {
     @Override
     public String toString() {
         return "Position: " + position.getName() + "\nPlayer: " + getFullName() + "\nAvg Rank: " + averageRanking + "\nBest Rank: "
-                + bestRanking + "\nWorst Rank: " + worstRanking + "\nADP: " + adp + "\nTeam: " + team + "\nBye Week: " + byeWeek;
+            + bestRanking + "\nWorst Rank: " + worstRanking + "\nADP: " + adp + "\nTeam: " + team + "\nBye Week: " + byeWeek;
     }
 }

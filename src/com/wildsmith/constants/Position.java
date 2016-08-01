@@ -1,9 +1,12 @@
 package com.wildsmith.constants;
 
 public enum Position {
-
-    QUARTER_BACK("Quarterbacks"), RUNNING_BACK("Running Backs"), WIDE_RECEIVER("Wide Receivers"), TIGHT_END("Tight Ends"), KICKER("Kickers"), DEFENSIVE_SPECIAL_TEAM(
-            "Defensive Special Teams");
+    QUARTER_BACK("Quarterbacks"),
+    RUNNING_BACK("Running Backs"),
+    WIDE_RECEIVER("Wide Receivers"),
+    TIGHT_END("Tight Ends"),
+    KICKER("Kickers"),
+    DEFENSIVE_SPECIAL_TEAM("Defensive Special Teams");
 
     Position(String name) {
         this.name = name;

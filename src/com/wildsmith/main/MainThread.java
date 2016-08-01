@@ -1,11 +1,8 @@
 package com.wildsmith.main;
 
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.Scanner;
+import com.wildsmith.constants.CSSLocationConstants;
+import com.wildsmith.objects.Player;
+import com.wildsmith.position.PositionFactory;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -14,9 +11,12 @@ import org.jsoup.nodes.Node;
 import org.jsoup.nodes.TextNode;
 import org.jsoup.select.Elements;
 
-import com.wildsmith.constants.CSSLocationConstants;
-import com.wildsmith.objects.Player;
-import com.wildsmith.position.PositionFactory;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+import java.util.Scanner;
 
 public class MainThread {
 
@@ -30,7 +30,7 @@ public class MainThread {
 
         generateDraftOrder();
 
-        List<Player> rankedPlayers = new ArrayList<>();
+        List<Player> rankedPlayers = new ArrayList<Player>();
         for (PositionFactory positionFactory : CSSLocationConstants.POSITION_FACTORIES) {
             rankedPlayers.addAll(positionFactory.build());
         }
@@ -52,35 +52,35 @@ public class MainThread {
     /**
      * Note: The numbers do not correlate with draft order; simply with the id that could be assigned some
      * random draft position.
-     * 
+     * <p/>
      * Number 1 == Johnnie Walkers
-     * 
+     * <p/>
      * Number 2 == Zoidberg
-     * 
+     * <p/>
      * Number 3 == Flaky Crust
-     * 
+     * <p/>
      * Number 4 == The Derps
-     * 
+     * <p/>
      * Number 5 == Sallad Rats
-     * 
+     * <p/>
      * Number 6 == Linda's Legit Team
-     * 
+     * <p/>
      * Number 7 == Sharknados
-     * 
+     * <p/>
      * Number 8 == Flying Sex Snakes
-     * 
+     * <p/>
      * Number 9 == Concussed,
-     * 
+     * <p/>
      * Number 10 == Bear F!#%ers
-     * 
+     * <p/>
      * Number 11 == Panda Swag
-     * 
+     * <p/>
      * Number 12 == Adam's Team
      */
     private static void generateDraftOrder() {
         int size = 10;
 
-        List<Integer> list = new ArrayList<>(size);
+        List<Integer> list = new ArrayList<Integer>(size);
         for (int i = 1; i <= size; i++) {
             list.add(i);
         }
